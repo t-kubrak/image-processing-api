@@ -1,11 +1,13 @@
 {
   "root": true,
   "plugins": [
-    "prettier"
+    "prettier",
+    "@typescript-eslint"
   ],
   "extends": [
     "eslint:recommended",
-    "prettier"
+    "prettier",
+    "plugin:@typescript-eslint/recommended"
   ],
   "rules": {
     "prettier/prettier": 2,
@@ -13,6 +15,7 @@
     "no-var": "error",
     "prefer-const": "error"
   },
+  "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "ecmaVersion": 2017,
     "sourceType": "module"
