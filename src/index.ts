@@ -43,3 +43,5 @@ app.get('/api/images', async (req, res) => {
         res.status(500).send(`Couldn't serve the image specified`);
     }
 });
+
+export default app;
