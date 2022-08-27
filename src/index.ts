@@ -1,7 +1,6 @@
 import express from 'express';
-import sharp from 'sharp';
+import { process, exists } from './image-processor';
 import path from 'path';
-import { stat } from 'fs/promises';
 
 const app = express();
 const port = 3000;
@@ -15,27 +14,21 @@ app.get('/api/images', async (req, res) => {
     const filename = req.query.filename as unknown as string;
     const width = req.query.width as unknown as string;
     const height = req.query.height as unknown as string;
-    const imagePath = path.resolve(`images/full/${filename}.jpg`);
+    const imageInput = path.resolve(`images/full/${filename}.jpg`);
     const imageOutput = path.resolve(
         `images/thumb/${filename}-${width}-${height}.jpg`
     );
 
     if (!width || !height) {
-        return res.sendFile(imagePath);
+        return res.sendFile(imageInput);
     }
 
-    const imageExists = await stat(imageOutput)
-        .then(() => true)
-        .catch(() => false);
-
-    if (imageExists) {
+    if (await exists(imageOutput)) {
         return res.sendFile(imageOutput);
     }
 
     try {
-        await sharp(imagePath)
-            .resize(parseInt(width), parseInt(height))
-            .toFile(imageOutput);
+        await process(imageInput, imageOutput, width, height);
 
         return res.sendFile(imageOutput);
     } catch (e) {
