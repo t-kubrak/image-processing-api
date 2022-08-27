@@ -13,8 +13,10 @@ the specified width and height.
 
 1. `npm build && npm start` to build and run the server
 2. Open the api url http://localhost:3000/api/images and enter parameters for image file name, width and height. 
-For instance http://localhost:3000/api/images?filename=fjord&width=1280&height=720 will resize the image with name fjord
-to have width 1280px and height 720px.
+For instance http://localhost:3000/api/images?filename=fjord&width=1280&height=720 will resize the image with name `fjord`
+to have width `1280`px and height `720`px.
+3. The images available for conversion are located in the `images/full` folder and the converted images are in the `images/thumb` folder.
+Currently the code is able to process only the images with `.jpg` extension.
 
 ## Development
 - `npm test` to run the tests
