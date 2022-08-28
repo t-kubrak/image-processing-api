@@ -1,7 +1,5 @@
 # Image Processing Api
 
-# UdaciRacer Simulator
-
 This project is part of the
 [Full Stack JavaSript Nanodegree](https://www.udacity.com/course/full-stack-javascript-developer-nanodegree--nd0067) 
 program by Udacity. It provides a modifiable api to change image properties. Currently, it's able to resize the image with 
